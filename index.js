@@ -64,14 +64,18 @@ const icecreamReducer = (state = icecreaminitialState, action) => {
   switch (action.type) {
     case ICECREAM_ORDER:
       return {
-        ...state,noOfIcecream:state.noOfIcecream - action.payload
-      }
+        ...state,
+        noOfIcecream: state.noOfIcecream - action.payload,
+      };
     case ICECREAM_RESTOCK:
       return {
-        ...state,noOfIcecream:state.noOfIcecream + action.payload
-      }
+        ...state,
+        noOfIcecream: state.noOfIcecream + action.payload,
+      };
+    case CAKE_ORDERED:
+      return { ...state, noOfIcecream: state.noOfIcecream - 1 };
     default:
-      return state
+      return state;
   }
   
 }
@@ -86,9 +90,9 @@ const store = createStore(rootReducer,applyMiddleware(logger))
 const subscribe =store.subscribe(() => {
 })
 const actions = bindActionCreators({orderCake,restockCake,orderIceCream,restockIceCream},store.dispatch)
-actions.orderCake()
+// actions.orderCake()
 actions.orderIceCream(2)
-
+actions.orderCake(2)
 
 
 // store.dispatch(orderCake);
