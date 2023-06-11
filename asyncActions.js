@@ -67,7 +67,7 @@ const fetchData = () => {
     axios
       .get(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => {
-        const users = request.data.map(user => user.username)
+        const users = response.data.map(user => user.username)
         dispatch(fetch_data_successful(users));
       })
       .catch((error) => {
